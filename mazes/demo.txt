@@ -1,0 +1,18 @@
+#Клетка (row + col) % 2 == 0 направлена вершиной вверх.
+#У неё vertical ведёт вниз, у противоположной ориентации — вверх.
+size 7 11
+start 6 0
+exit 0 10 right
+lms_radius 6
+lms_start left
+
+wall 6 1 right
+wall 6 3 vertical
+wall 5 4 right
+wall 4 2 right
+wall 4 5 vertical
+wall 3 6 right
+wall 2 3 vertical
+wall 2 7 right
+wall 1 8 vertical
+wall 0 8 right

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cell Robot</title>
+  <link rel="stylesheet" href="/frontend/css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">Лабораторная работа</div>
+        <h1>Cell Robot</h1>
+      </div>
+      <div class="connection" id="connectionStatus" aria-live="polite">
+        <span class="connection-dot"></span>
+        <span>Подключение…</span>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="panel maze-panel">
+        <div class="panel-header maze-toolbar">
+          <div>
+            <div class="panel-kicker">Лабиринт</div>
+            <h2 id="mazeTitle">—</h2>
+          </div>
+
+          <div class="maze-selector">
+            <select id="mazeSelect" aria-label="Выбор лабиринта"></select>
+            <button class="btn btn-secondary" id="loadMazeBtn">Загрузить</button>
+          </div>
+        </div>
+
+        <div class="maze-stage" id="mazeStage">
+          <svg id="mazeSvg" class="maze-svg" role="img" aria-label="Треугольный лабиринт"></svg>
+          <div class="maze-placeholder" id="mazePlaceholder">Загрузка лабиринта…</div>
+        </div>
+
+        <div class="legend">
+          <span><i class="legend-mark robot-mark"></i> Робот</span>
+          <span><i class="legend-mark wall-mark"></i> Стена</span>
+          <span><i class="legend-mark exit-mark"></i> Выход</span>
+        </div>
+
+        <div class="manual-controls">
+          <div class="control-copy">
+            <div class="panel-kicker">Ручное управление</div>
+          </div>
+          <div class="control-buttons">
+            <button class="control-btn" data-move="left" title="Влево">←<span>left</span></button>
+            <button class="control-btn" data-move="vertical" title="Вертикально">↑<span>move</span></button>
+            <button class="control-btn" data-move="right" title="Вправо">→<span>right</span></button>
+            <button class="control-btn lms-btn" id="lmsBtn" title="Лазерный дальномер">LMS<span>scan</span></button>
+            <button class="btn btn-danger-soft" id="resetBtn">Сброс</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side-column">
+        <section class="panel status-panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-kicker">Состояние</div>
+              <h2>Робот</h2>
+            </div>
+            <span class="status-badge" id="gameStatusBadge">Активен</span>
+          </div>
+
+          <div class="status-grid">
+            <div class="status-card">
+              <span>Позиция</span>
+              <strong id="robotPosition">—</strong>
+            </div>
+            <div class="status-card">
+              <span>LMS направление</span>
+              <strong id="lmsDirection">—</strong>
+            </div>
+            <div class="status-card">
+              <span>Последнее действие</span>
+              <strong id="lastAction">—</strong>
+            </div>
+            <div class="status-card">
+              <span>Результат</span>
+              <strong id="lastResult">—</strong>
+            </div>
+          </div>
+
+          <div class="flags">
+            <div class="flag-row">
+              <span>Выход обнаружен</span>
+              <strong id="exitDetected">нет</strong>
+            </div>
+            <div class="flag-row">
+              <span>Лабиринт завершён</span>
+              <strong id="completed">нет</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel editor-panel">
+          <div class="panel-header editor-header">
+            <div>
+              <div class="panel-kicker">Интерпретатор</div>
+              <h2>Программа</h2>
+            </div>
+            <button class="btn btn-primary" id="runBtn">▶ Запустить</button>
+          </div>
+
+          <div class="editor-wrap">
+            <textarea id="sourceEditor" spellcheck="false" aria-label="Исходный код программы"></textarea>
+          </div>
+
+          <div class="console-wrap">
+            <div class="console-header">
+              <span>Вывод</span>
+              <button class="text-btn" id="clearConsoleBtn">Очистить</button>
+            </div>
+            <pre id="consoleOutput" class="console-output">Готово к запуску.</pre>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script type="module" src="/frontend/js/app.js"></script>
+</body>
+</html>

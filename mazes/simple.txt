@@ -1,0 +1,8 @@
+size 3 5
+start 1 2
+exit 1 4 right
+lms_radius 4
+lms_start left
+
+wall 1 1 left
+wall 0 2 vertical
